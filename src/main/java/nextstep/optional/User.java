@@ -35,9 +35,7 @@ public class User {
     }
 
     public static boolean ageIsInRange2(User user) {
-        Optional<User> opt = Optional.ofNullable(user);
-        Optional<User> optionalUser = opt.stream().filter((u) -> u.getAge() != null && u.getAge() >= 30 && u.getAge() <= 45).findAny();
-        return optionalUser.isPresent();
+        return Optional.ofNullable(user).filter((u) -> u.getAge() != null && u.getAge() >= 30 && u.getAge() <= 45).isPresent();
     }
 
     @Override
