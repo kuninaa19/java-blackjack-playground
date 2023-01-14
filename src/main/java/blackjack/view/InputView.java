@@ -16,6 +16,7 @@ public class InputView {
 
     public static Players inputPlayers() {
         List<Name> names = inputNames();
+        emptyLine();
         List<Stake> stakes = inputStakes(names);
 
         return inputPlayers(names, stakes);
@@ -77,8 +78,8 @@ public class InputView {
         List<Stake> stakes = new ArrayList<>();
 
         for (Name name : names) {
-            emptyLine();
             stakes.add(inputStake(name));
+            emptyLine();
         }
 
         return stakes;
