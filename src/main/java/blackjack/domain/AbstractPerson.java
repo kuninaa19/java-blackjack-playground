@@ -14,6 +14,21 @@ public abstract class AbstractPerson implements Person {
     }
 
     @Override
+    public void addCard(Card card) {
+        cards.addCard(card);
+    }
+
+    @Override
+    public String getName() {
+        return name.getName();
+    }
+
+    @Override
+    public Cards getCards() {
+        return cards;
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

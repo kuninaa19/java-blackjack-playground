@@ -1,14 +1,29 @@
 package blackjack.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Players {
+    public static final String DELIMITER = ",";
+
     private final List<Player> players;
 
     public Players(List<Player> players) {
         this.players = players;
+    }
+
+    public Player getPlayer(int idx) {
+        return this.players.get(idx);
+    }
+
+    public int count() {
+        return players.size();
+    }
+
+    public String getNames() {
+        List<String> names = this.players.stream().map(AbstractPerson::getName).collect(Collectors.toList());
+        return String.join(DELIMITER, names);
     }
 
     @Override

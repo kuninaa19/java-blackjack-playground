@@ -3,8 +3,10 @@ package blackjack.domain;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Cards {
+    public static final String DELIMITER = ", ";
     private final List<Card> cards;
 
     public Cards() {
@@ -21,6 +23,11 @@ public class Cards {
 
     public List<Card> getCards() {
         return new ArrayList<>(cards);
+    }
+
+    public String getCardNames(){
+        List<String> cardNames = this.cards.stream().map(Card::toString).collect(Collectors.toList());
+        return String.join(DELIMITER, cardNames);
     }
 
     @Override
