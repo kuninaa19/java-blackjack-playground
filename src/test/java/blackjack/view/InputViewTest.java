@@ -1,9 +1,6 @@
 package blackjack.view;
 
-import blackjack.domain.Name;
-import blackjack.domain.Player;
-import blackjack.domain.Players;
-import blackjack.domain.Stake;
+import blackjack.domain.*;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -41,8 +38,8 @@ public class InputViewTest {
         List<Stake> stakes = Arrays.asList(new Stake(10000), new Stake(20000));
         Players players = InputView.inputPlayers(names, stakes);
 
-        Player pobi = new Player(new Name("pobi"), new Stake(10000));
-        Player jason = new Player(new Name("jason"), new Stake(20000));
+        Player pobi = new Player(new Name("pobi"), new Stake(10000), new Cards());
+        Player jason = new Player(new Name("jason"), new Stake(20000), new Cards());
 
         assertThat(players).isEqualTo(new Players(Arrays.asList(pobi, jason)));
     }

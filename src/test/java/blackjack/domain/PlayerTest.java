@@ -9,8 +9,8 @@ public class PlayerTest {
     void 플레이어_생성() {
         Name pobi = new Name("pobi");
         Stake stakes = new Stake(1);
-        Player player = new Player(pobi, stakes);
+        Player player = new Player(pobi, stakes, new Cards());
 
-        assertThat(player).isEqualTo(new Player(pobi, stakes));
+        assertThat(player).isEqualTo(new Player(pobi, stakes, new Cards()));
     }
 }

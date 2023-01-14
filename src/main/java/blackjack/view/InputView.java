@@ -1,9 +1,6 @@
 package blackjack.view;
 
-import blackjack.domain.Name;
-import blackjack.domain.Player;
-import blackjack.domain.Players;
-import blackjack.domain.Stake;
+import blackjack.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +25,7 @@ public class InputView {
         List<Player> players = new ArrayList<>();
 
         for (int i = 0; i < names.size(); i++) {
-            players.add(new Player(names.get(i), stakes.get(i)));
+            players.add(new Player(names.get(i), stakes.get(i), new Cards()));
         }
 
         return new Players(players);
@@ -87,7 +84,7 @@ public class InputView {
         return stakes;
     }
 
-    private static void emptyLine(){
+    private static void emptyLine() {
         System.out.println();
     }
 }

@@ -10,7 +10,7 @@ public class PlayersTest {
 
     @Test
     void 플레이어_1명_생성() {
-        Player pobi = new Player(new Name("pobi"), new Stake(10000));
+        Player pobi = new Player(new Name("pobi"), new Stake(10000), new Cards());
         Players players = new Players(Arrays.asList(pobi));
 
         assertThat(players).isEqualTo(new Players(Arrays.asList(pobi)));
@@ -19,8 +19,8 @@ public class PlayersTest {
 
     @Test
     void 플레이어_2명_생성() {
-        Player pobi = new Player(new Name("pobi"), new Stake(10000));
-        Player jason = new Player(new Name("jason"), new Stake(20000));
+        Player pobi = new Player(new Name("pobi"), new Stake(10000), new Cards());
+        Player jason = new Player(new Name("jason"), new Stake(20000), new Cards());
         Players players = new Players(Arrays.asList(pobi, jason));
 
         assertThat(players).isEqualTo(new Players(Arrays.asList(pobi, jason)));
