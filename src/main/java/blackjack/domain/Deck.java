@@ -19,7 +19,7 @@ public class Deck {
         deck = new HashSet<>(CARD_COUNT);
     }
 
-    public void draw(Person person, Draw draw){
+    public void draw(Person person, Draw draw) {
         for (int i = 0; i < draw.getCount(); i++) {
             Card card = this.draw(Deck.randomNumberInRange());
             person.addCard(card);
