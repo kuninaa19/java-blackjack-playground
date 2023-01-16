@@ -27,4 +27,11 @@ public class CardsTest {
 
         assertThat(cards.getCards()).isEqualTo(Arrays.asList(new Card(Score.A, Suit.CLOVERS), new Card(Score.TWO, Suit.DIAMONDS)));
     }
+
+    @Test
+    void 카드_결과_버스트() {
+        Cards cards = new Cards(Arrays.asList(new Card(Score.J, Suit.CLOVERS), new Card(Score.J, Suit.DIAMONDS), new Card(Score.TWO, Suit.DIAMONDS)));
+
+        assertThat(cards.isBust()).isTrue();
+    }
 }

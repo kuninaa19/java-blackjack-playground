@@ -40,4 +40,9 @@ public abstract class AbstractPerson implements Person {
     public int hashCode() {
         return Objects.hash(name, stake, cards);
     }
+
+    @Override
+    public String toString() {
+        return name.getName() + " 카드: " + cards.getCardNames() + " - 결과: " + cards.sum();
+    }
 }

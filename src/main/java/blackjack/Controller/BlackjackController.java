@@ -18,16 +18,38 @@ public class BlackjackController {
     public void run() {
         Players players = InputView.inputPlayers();
 
-        initDraw(players);
-        OutputView.initCardDraw(dealer, players);
+        play(players, Draw.INIT);
+        play(players, Draw.HIT);
     }
 
-    private void initDraw(Players players) {
+    private void play(Players players, Draw draw) {
         for (int i = 0; i < players.count(); i++) {
-            Player player = players.getPlayer(i);
-            deck.draw(player, Draw.INIT);
+            draw(players.getPlayer(i), draw);
         }
 
-        deck.draw(dealer, Draw.INIT);
+        draw(dealer, draw);
+
+        OutputView.cardDraw(dealer, players, draw);
+    }
+
+    private void draw(Person person, Draw drawCount) {
+        if (drawCount.isInit()) {
+            deck.draw(person, drawCount);
+            return;
+        }
+
+        hit(person, drawCount);
+    }
+
+    private void hit(Person person, Draw drawCount) {
+        if (person instanceof Player && person.isDrawCondition()) {
+            InputView.hit(person, deck, Draw.HIT);
+            return;
+        }
+
+        if (person instanceof Dealer && person.isDrawCondition()) {
+            OutputView.printDealerCardDraw(dealer);
+            deck.draw(person, drawCount);
+        }
     }
 }

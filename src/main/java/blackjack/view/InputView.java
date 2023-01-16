@@ -1,5 +1,6 @@
 package blackjack.view;
 
+import blackjack.contstant.Draw;
 import blackjack.domain.*;
 
 import java.util.ArrayList;
@@ -10,6 +11,7 @@ public class InputView {
     private static final String INPUT_NAMES = "게임에 참여할 사람의 이름을 입력하세요.(쉼표 기준으로 분리)";
     private static final String INPUT_STAKES = "의 배팅 금액은?";
     private static final String NUMBER_FORMAT_EXCEPTION = "숫자를 입력해주세요";
+    public static final String INPUT_ADD_CARD = "는 한장의 카드를 더 받겠습니까?(예는 y, 아니오는 n)";
     public static final String NAME_SPLIT_REGEX = ",";
 
     private static Scanner scanner = new Scanner(System.in);
@@ -87,5 +89,27 @@ public class InputView {
 
     private static void emptyLine() {
         System.out.println();
+    }
+
+    public static void hit(Person person, Deck deck, Draw drawCount) {
+        if (!person.isDrawCondition()) return;
+
+        if (InputView.inputHit(person).isHit()) {
+            deck.draw(person, drawCount);
+            OutputView.printCardInfo(person, () -> true);
+
+            hit(person, deck, drawCount);
+        }
+    }
+
+    public static Draw inputHit(Person person) {
+        System.out.println(person.getName() + INPUT_ADD_CARD);
+
+        try {
+            return Draw.getStatus(scanner.nextLine());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return inputHit(person);
+        }
     }
 }
