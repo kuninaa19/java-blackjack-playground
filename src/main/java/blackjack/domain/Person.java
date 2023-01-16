@@ -7,4 +7,6 @@ public interface Person {
     String getName();
 
     Cards getCards();
+
+    boolean isDrawCondition();
 }
