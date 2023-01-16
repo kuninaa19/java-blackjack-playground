@@ -17,6 +17,10 @@ public class Card {
         return new Card(card.score, card.suit);
     }
 
+    public int getScore() {
+        return score.getScore();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -40,4 +40,13 @@ public class CardTest {
         assertThat(queen).hasToString(new Card(Score.Q, Suit.DIAMONDS).toString());
         assertThat(king).hasToString(new Card(Score.K, Suit.SPADES).toString());
     }
+
+    @Test
+    void 카드_숫자_조회() {
+        Card jack = new Card(Score.J, Suit.HEARTS);
+        Card two = new Card(Score.TWO, Suit.HEARTS);
+
+        assertThat(jack.getScore()).isEqualTo(Score.J.getScore());
+        assertThat(two.getScore()).isEqualTo(Score.TWO.getScore());
+    }
 }
