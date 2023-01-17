@@ -12,16 +12,12 @@ public enum Suit {
         this.koreaSpell = name;
     }
 
-    public static Suit fromOrdinal(int suit) {
-        return values()[getNum(suit)];
+    public static Suit fromOrdinal(int randomNumber) {
+        return values()[getNum(randomNumber)];
     }
 
     private static int getNum(int randomNumber) {
-        return randomNumber % Suit.getSize();
-    }
-
-    private static int getSize() {
-        return values().length;
+        return randomNumber / Score.getSize();
     }
 
     public String getKoreaSpell() {

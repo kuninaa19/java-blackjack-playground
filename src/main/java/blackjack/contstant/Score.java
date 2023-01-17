@@ -29,10 +29,9 @@ public enum Score {
         return randomNumber % Score.getSize();
     }
 
-    private static int getSize() {
+    public static int getSize() {
         return values().length;
     }
-
 
     public boolean isRank() {
         return this.equals(A) || this.equals(J) || this.equals(Q) || this.equals(K);
