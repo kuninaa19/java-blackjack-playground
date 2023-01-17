@@ -37,6 +37,10 @@ public enum Score {
         return this.equals(A) || this.equals(J) || this.equals(Q) || this.equals(K);
     }
 
+    public boolean isAce() {
+        return this.equals(A);
+    }
+
     public int getScore() {
         return score;
     }

@@ -13,6 +13,10 @@ public class Card {
         this.suit = suit;
     }
 
+    public boolean isAce() {
+        return score.isAce();
+    }
+
     public static Card of(Card card) {
         return new Card(card.score, card.suit);
     }

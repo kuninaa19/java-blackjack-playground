@@ -34,4 +34,33 @@ public class CardsTest {
 
         assertThat(cards.isBust()).isTrue();
     }
+
+    @Test
+    void 카드_합_계산_A_11_계산() {
+        Cards cards = new Cards(Arrays.asList(new Card(Score.A, Suit.CLOVERS), new Card(Score.J, Suit.DIAMONDS)));
+
+        assertThat(cards.sum()).isEqualTo(21);
+    }
+
+    @Test
+    void 카드_합_계산_A_2개() {
+        Cards cards = new Cards(Arrays.asList(new Card(Score.J, Suit.DIAMONDS), new Card(Score.NINE, Suit.DIAMONDS), new Card(Score.A, Suit.CLOVERS), new Card(Score.A, Suit.CLOVERS)));
+
+        assertThat(cards.sum()).isEqualTo(21);
+    }
+
+
+    @Test
+    void 카드_합_계산_A_1_계산() {
+        Cards cards = new Cards(Arrays.asList(new Card(Score.A, Suit.CLOVERS), new Card(Score.J, Suit.DIAMONDS), new Card(Score.K, Suit.DIAMONDS)));
+
+        assertThat(cards.sum()).isEqualTo(21);
+    }
+
+    @Test
+    void 카드_합_계산_A제외() {
+        Cards cards = new Cards(Arrays.asList(new Card(Score.TWO, Suit.CLOVERS), new Card(Score.NINE, Suit.DIAMONDS), new Card(Score.K, Suit.CLOVERS)));
+
+        assertThat(cards.sum()).isEqualTo(21);
+    }
 }

@@ -8,6 +8,8 @@ import java.util.stream.Collectors;
 public class Cards {
     public static final String DELIMITER = ", ";
     public static final int BLACKJACK = 21;
+    public static final int ACE_ADDITIONAL_SCORE = 10;
+
     private final List<Card> cards;
 
     public Cards() {
@@ -19,7 +21,16 @@ public class Cards {
     }
 
     public int sum() {
-        return this.cards.stream().map(Card::getScore).reduce(0, Integer::sum);
+        int sum = this.cards.stream().map(Card::getScore).reduce(0, Integer::sum);
+        if (isAdditionalScoreCondition(sum)) {
+            sum += ACE_ADDITIONAL_SCORE;
+        }
+
+        return sum;
+    }
+
+    private boolean isAdditionalScoreCondition(int sum) {
+        return this.cards.stream().anyMatch(Card::isAce) && sum + ACE_ADDITIONAL_SCORE <= BLACKJACK;
     }
 
     public boolean isBust() {
