@@ -1,5 +1,6 @@
 package blackjack.domain;
 
+import blackjack.contstant.Rule;
 import blackjack.contstant.Score;
 import blackjack.contstant.Suit;
 import org.junit.jupiter.api.Test;
@@ -32,21 +33,21 @@ public class CardsTest {
     void 카드_결과_버스트() {
         Cards cards = new Cards(Arrays.asList(new Card(Score.J, Suit.CLOVERS), new Card(Score.J, Suit.DIAMONDS), new Card(Score.TWO, Suit.DIAMONDS)));
 
-        assertThat(cards.isBust()).isTrue();
+        assertThat(cards.getRule()).isEqualTo(Rule.BUST);
     }
 
     @Test
     void 카드_합_계산_A_11_계산() {
         Cards cards = new Cards(Arrays.asList(new Card(Score.A, Suit.CLOVERS), new Card(Score.J, Suit.DIAMONDS)));
 
-        assertThat(cards.sum()).isEqualTo(21);
+        assertThat(cards.getRule()).isEqualTo(Rule.BLACKJACK);
     }
 
     @Test
     void 카드_합_계산_A_2개() {
         Cards cards = new Cards(Arrays.asList(new Card(Score.J, Suit.DIAMONDS), new Card(Score.NINE, Suit.DIAMONDS), new Card(Score.A, Suit.CLOVERS), new Card(Score.A, Suit.CLOVERS)));
 
-        assertThat(cards.sum()).isEqualTo(21);
+        assertThat(cards.getRule()).isEqualTo(Rule.BLACKJACK);
     }
 
 
@@ -54,13 +55,13 @@ public class CardsTest {
     void 카드_합_계산_A_1_계산() {
         Cards cards = new Cards(Arrays.asList(new Card(Score.A, Suit.CLOVERS), new Card(Score.J, Suit.DIAMONDS), new Card(Score.K, Suit.DIAMONDS)));
 
-        assertThat(cards.sum()).isEqualTo(21);
+        assertThat(cards.getRule()).isEqualTo(Rule.BLACKJACK);
     }
 
     @Test
     void 카드_합_계산_A제외() {
         Cards cards = new Cards(Arrays.asList(new Card(Score.TWO, Suit.CLOVERS), new Card(Score.NINE, Suit.DIAMONDS), new Card(Score.K, Suit.CLOVERS)));
 
-        assertThat(cards.sum()).isEqualTo(21);
+        assertThat(cards.getRule()).isEqualTo(Rule.BLACKJACK);
     }
 }

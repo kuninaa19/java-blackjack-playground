@@ -1,5 +1,6 @@
 package blackjack.domain;
 
+import blackjack.contstant.Rule;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -33,16 +34,24 @@ public class Cards {
         return this.cards.stream().anyMatch(Card::isAce) && sum + ACE_ADDITIONAL_SCORE <= BLACKJACK;
     }
 
-    public boolean isBust() {
-        return sum() > BLACKJACK;
-    }
-
     public void addCard(Card card) {
         this.cards.add(Card.of(card));
     }
 
     public List<Card> getCards() {
         return new ArrayList<>(cards);
+    }
+
+    public Rule getRule() {
+        if (sum() > BLACKJACK) {
+            return Rule.BUST;
+        }
+
+        if (sum() == BLACKJACK) {
+            return Rule.BLACKJACK;
+        }
+
+        return Rule.GENERAL;
     }
 
     public String getCardNames() {
