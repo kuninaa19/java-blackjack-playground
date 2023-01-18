@@ -34,6 +34,10 @@ public class Cards {
         return this.cards.stream().anyMatch(Card::isAce) && sum + ACE_ADDITIONAL_SCORE <= BLACKJACK;
     }
 
+    public boolean higherThan(Cards cards){
+        return sum() > cards.sum();
+    }
+
     public void addCard(Card card) {
         this.cards.add(Card.of(card));
     }

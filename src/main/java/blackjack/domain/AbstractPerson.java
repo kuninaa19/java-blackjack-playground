@@ -1,5 +1,7 @@
 package blackjack.domain;
 
+import blackjack.contstant.Rule;
+
 import java.util.Objects;
 
 public abstract class AbstractPerson implements Person {
@@ -24,8 +26,18 @@ public abstract class AbstractPerson implements Person {
     }
 
     @Override
+    public int getStake() {
+        return stake.getStake();
+    }
+
+    @Override
     public Cards getCards() {
         return cards;
+    }
+
+    @Override
+    public Rule getRule() {
+        return this.cards.getRule();
     }
 
     @Override

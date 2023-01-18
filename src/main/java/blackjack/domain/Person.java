@@ -1,6 +1,8 @@
 package blackjack.domain;
 
 
+import blackjack.contstant.Rule;
+
 public interface Person {
     void addCard(Card card);
 
@@ -9,4 +11,8 @@ public interface Person {
     Cards getCards();
 
     boolean isDrawCondition();
+
+    Rule getRule();
+
+    int getStake();
 }
