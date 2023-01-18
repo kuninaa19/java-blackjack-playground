@@ -20,6 +20,7 @@ public class BlackjackController {
 
         play(players, Draw.INIT);
         play(players, Draw.HIT);
+        OutputView.showProfit(dealer,players);
     }
 
     private void play(Players players, Draw draw) {

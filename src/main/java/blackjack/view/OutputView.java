@@ -5,6 +5,7 @@ import blackjack.domain.*;
 
 public class OutputView {
     public static final String INPUT_DEALER_ADD_CARD = "는 16이하라 한장의 카드를 더 받았습니다.";
+    public static final String OUTPUT_PROFIT_RESULT = "## 최종 수익";
 
     public static void cardDraw(Person dealer, Players players, Draw draw) {
         if (draw.isInit()) {
@@ -42,5 +43,15 @@ public class OutputView {
 
     private static void emptyLine() {
         System.out.println();
+    }
+
+    public static void showProfit(Dealer dealer, Players players) {
+        System.out.println(OUTPUT_PROFIT_RESULT);
+        System.out.println(dealer.getName() + ": " + dealer.profit(players));
+
+        for (int i = 0; i < players.count(); i++) {
+            Player player = players.getPlayer(i);
+            System.out.println(player.getName() + ": " + player.profit(dealer));
+        }
     }
 }
