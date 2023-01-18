@@ -15,7 +15,6 @@ public class CardsTest {
     void 카드_추가() {
         Cards cards = new Cards(Arrays.asList(new Card(Score.A, Suit.CLOVERS), new Card(Score.TWO, Suit.DIAMONDS)));
         cards.addCard(new Card(Score.THREE, Suit.HEARTS));
-        cards.addCard(new Card(Score.THREE, Suit.HEARTS));
 
         List<Card> expected = Arrays.asList(new Card(Score.A, Suit.CLOVERS), new Card(Score.TWO, Suit.DIAMONDS), new Card(Score.THREE, Suit.HEARTS));
 

@@ -32,7 +32,7 @@ public class PlayerTest {
 
     @Test
     void 이름_조회() {
-        assertThat(player.getName()).isEqualTo(new Name("pobi"));
+        assertThat(player.getName()).isEqualTo("pobi");
     }
 
     @Test
