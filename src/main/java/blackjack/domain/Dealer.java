@@ -10,9 +10,20 @@ public class Dealer extends AbstractPerson {
         super(new Name(NAME), new Stake(MONEY), new Cards());
     }
 
-    public boolean isDrawCondition(){
+    public boolean isDrawCondition() {
         Cards cards = getCards();
 
         return cards.sum() < DRAW_CONDITION;
+    }
+
+    public int profit(Players players) {
+        int profit = 0;
+
+        for (int i = 0; i < players.count(); i++) {
+            Player player = players.getPlayer(i);
+            profit += -player.profit(this);
+        }
+
+        return profit;
     }
 }
