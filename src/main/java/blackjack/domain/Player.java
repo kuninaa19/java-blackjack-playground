@@ -26,7 +26,7 @@ public class Player extends AbstractPerson {
     }
 
     private boolean loss(Person dealer) {
-        return this.getRule().isBust() || (!getCards().higherThan(dealer.getCards()));
+        return this.getRule().isBust() || dealer.getCards().higherThan(getCards());
     }
 
     private int benefit(Person dealer) {

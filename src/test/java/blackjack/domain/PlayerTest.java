@@ -83,4 +83,16 @@ public class PlayerTest {
 
         assertThat(player.profit(dealer)).isEqualTo(-1000);
     }
+
+    @Test
+    void 수익_조회_동결() {
+        player.addCard(new Card(Score.TWO, Suit.CLOVERS));
+        player.addCard(new Card(Score.K, Suit.CLOVERS));
+
+        Dealer dealer = new Dealer();
+        dealer.addCard(new Card(Score.TWO, Suit.CLOVERS));
+        dealer.addCard(new Card(Score.J, Suit.DIAMONDS));
+
+        assertThat(player.profit(dealer)).isEqualTo(0);
+    }
 }
